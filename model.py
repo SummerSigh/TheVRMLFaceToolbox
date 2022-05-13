@@ -1,5 +1,5 @@
 import torch
-
+import matplotlib.pyplot as plt
 net = torch.nn.Sequential(
     torch.nn.Conv2d(in_channels=2, out_channels=20, kernel_size=5, stride=1),
     torch.nn.ReLU(),
@@ -41,24 +41,18 @@ for k in state_dict.keys():
 net.load_state_dict(new_state_dict)
 #load cv2 video 
 import cv2 
-import numpy as np  
-cap = cv2.VideoCapture(0)
+import numpy
+cap = cv2.VideoCapture("mouth.mp4")
 while True:
     ret, frame = cap.read()
-    #resize the frame to 100x100
-    frame = cv2.resize(frame, (100, 100))
-    #make black and white
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    #make a copy of the frame
-    frame_copy = frame.copy()
-    frame_copy = cv2.resize(frame, (100, 100))
-    #add frame_copy and frame togheter
-    frame = np.concatenate((frame, frame_copy), axis=1)
-    #reshape the frame to (1, 2, 100, 100)
-    frame = frame.reshape(1, 2, 100, 100) 
-    tensor_frame = torch.Tensor(frame)
+    frame_processed = frame.reshape(1, 2, 100, 100) 
+    tensor_frame = torch.Tensor(frame_processed)
     prediction = net(tensor_frame)
-    #print the prediction
-    print(prediction)
+    prediction = prediction.detach().numpy()
+    plt.plot(prediction[0])
+    plt.pause(0.001)
+    plt.clf()
+    cv2.imshow("frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
