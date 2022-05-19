@@ -6,6 +6,6 @@ Its pretty easy, download this repo and run main.py. Currently we are using a te
 
 - [x] - Add the Vive Model
 
-- []  - Decompile SRanipal and figure out how Vive processes the output values from the model.
+- [] - Decompile SRanipal and figure out how Vive processes the output values from the model.
 
 ***This repo is a work in progress and currently only outputs raw tensor values and not blenshapes***
