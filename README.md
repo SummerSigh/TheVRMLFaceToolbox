@@ -8,4 +8,6 @@ Its pretty easy, download this repo and run main.py. Currently we are using a te
 
 - [ ] - Decompile SRanipal and figure out how Vive processes the output values from the model.
 
+- [ ] - Train a new monocular image model using Vive model. 
+
 ***This repo is a work in progress and currently only outputs raw tensor values and not blenshapes***
