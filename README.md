@@ -32,7 +32,7 @@ SEMAINE from FERA2015
 
 UNBC
 
-CK+
+CK+ *(Obtained)
 
 **With this in mind here is the new plan:**
 - [ ] - Obtain data and preprocess 
