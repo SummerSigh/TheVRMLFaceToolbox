@@ -43,7 +43,7 @@ CK+ *(Obtained)*
 
 
 **With this in mind here is the new plan:**
-- [ ] - Create dataset by using OpenFace to label a large corpus of data on FACS
+- [ ] - Create dataset by using OpenFace to label a large corpus of data (FFHQ) on FACS
 - [ ] - Preprocces data (croping mouth region amoung other things)
 - [ ] - Train and test model using data
 - [ ] - Publish model
