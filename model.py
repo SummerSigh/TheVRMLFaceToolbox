@@ -1,5 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
+import time
 net = torch.nn.Sequential(
     torch.nn.Conv2d(in_channels=2, out_channels=20, kernel_size=5, stride=1),
     torch.nn.ReLU(),
@@ -48,9 +49,16 @@ while True:
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     frame_processed = frame.reshape(1, 2, 100, 100) 
     tensor_frame = torch.Tensor(frame_processed)
+    #start time
+    start = time.time()
     prediction = net(tensor_frame)
     prediction = prediction.detach().numpy()
-    plt.plot(prediction[0])
+    #plot data on a bar graph
+    plt.bar(range(30), prediction[0])
+    #plt.plot(prediction[0])
+    #end time
+    end = time.time()
+    print("Time: ", end - start)
     plt.pause(0.001)
     plt.clf()
     cv2.imshow("frame", frame)
