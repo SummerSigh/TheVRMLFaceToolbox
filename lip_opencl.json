@@ -1,0 +1,287 @@
+{
+  "nodes": [
+    {
+      "op": "null", 
+      "name": "data",   
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "conv1_weight", 
+      "inputs": []
+    }, 
+    {                              
+      "op": "null", 
+      "name": "conv1_bias", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "relu0", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_conv2d_relu", 
+        "num_inputs": "3", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[0, 0, 0], [1, 0, 0], [2, 0, 0]]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "max_pool2d0", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_max_pool2d", 
+        "num_inputs": "1", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[3, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "conv2_weight", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "conv2_bias", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "relu1", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_conv2d_relu_1", 
+        "num_inputs": "3", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[4, 0, 0], [5, 0, 0], [6, 0, 0]]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "max_pool2d1", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_max_pool2d_1", 
+        "num_inputs": "1", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[7, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "conv3_weight", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "conv3_bias", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "relu2", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_conv2d_relu_2", 
+        "num_inputs": "3", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[8, 0, 0], [9, 0, 0], [10, 0, 0]]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "flatten1", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_flatten_flatten", 
+        "num_inputs": "1", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[11, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "fc5_ft_weight", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "fc5_ft_bias", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "dense0", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_dense", 
+        "num_inputs": "3", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[12, 0, 0], [13, 0, 0], [14, 0, 0]]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "flatten2", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_flatten", 
+        "num_inputs": "1", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[15, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "fc6_10_weight", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "fc6_10_bias", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "relu3", 
+      "attrs": {
+        "flatten_data": "0", 
+        "func_name": "fuse_dense_relu", 
+        "num_inputs": "3", 
+        "num_outputs": "1"
+      }, 
+      "inputs": [[16, 0, 0], [17, 0, 0], [18, 0, 0]]
+    }
+  ], 
+  "arg_nodes": [
+    0, 
+    1, 
+    2, 
+    5, 
+    6, 
+    9, 
+    10, 
+    13, 
+    14, 
+    17, 
+    18
+  ], 
+  "node_row_ptr": [
+    0, 
+    1, 
+    2, 
+    3, 
+    4, 
+    5, 
+    6, 
+    7, 
+    8, 
+    9, 
+    10, 
+    11, 
+    12, 
+    13, 
+    14, 
+    15, 
+    16, 
+    17, 
+    18, 
+    19, 
+    20
+  ], 
+  "heads": [[19, 0, 0]], 
+  "attrs": {
+    "storage_id": ["list_int", [
+        5, 
+        6, 
+        7, 
+        0, 
+        1, 
+        8, 
+        9, 
+        0, 
+        1, 
+        10, 
+        11, 
+        0, 
+        1, 
+        12, 
+        13, 
+        2, 
+        3, 
+        14, 
+        15, 
+        4]], 
+    "shape": ["list_shape", [
+        [1, 2, 100, 100], 
+        [20, 2, 5, 5], 
+        [20], 
+        [1, 20, 96, 96], 
+        [1, 20, 48, 48], 
+        [48, 20, 5, 5], 
+        [48], 
+        [1, 48, 44, 44], 
+        [1, 48, 22, 22], 
+        [64, 48, 3, 3], 
+        [64], 
+        [1, 64, 20, 20], 
+        [1, 25600], 
+        [500, 25600], 
+        [500], 
+        [1, 500], 
+        [1, 500], 
+        [30, 500], 
+        [30], 
+        [1, 30]]], 
+    "dtype": ["list_int", [
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0]], 
+    "dltype": ["list_str", [
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32", 
+        "float32"]]
+  }
+}
+
+
+
+//in pytorch this model would look like 
+//model = torch.nn.Sequential(
+//    torch.nn.Conv2d(1, 20, 5, 1, 0),
