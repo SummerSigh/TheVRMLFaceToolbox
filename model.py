@@ -99,11 +99,16 @@ cap = cv2.VideoCapture("mouth.mp4")
 while True:
     ret, frame = cap.read()
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    # define frame to a floating-point field to 8 bytes.
+    frame = frame.astype(np.float)
+    frame = frame/255.0
     frame_processed = frame.reshape(1, 2, 100, 100) 
     tensor_frame = torch.Tensor(frame_processed)
     prediction = net(tensor_frame)
     prediction = prediction.detach().numpy()
     x = prediction[0]
+    #print the tensor with the highest value
+    print(x.argmax())
     plt.bar((range(30)), x)
     plt.show(block=False)
     plt.pause(0.01)
@@ -169,6 +174,6 @@ while True:
     #client.send_message("/avatar/parameters/TongueDownRightMorph", float(TongueDownRightMorph)) i ran out of values, so i think that I have mapped the tensors wrong.
 
 
-    cv2.imshow("frame", frame)
+    #cv2.imshow("frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
