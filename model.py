@@ -98,6 +98,7 @@ cap = cv2.VideoCapture("mouth.mp4")
 
 while True:
     ret, frame = cap.read()
+    frame_copy = frame.copy()
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # define frame to a floating-point field to 8 bytes.
     frame = frame.astype(np.float)
@@ -172,8 +173,6 @@ while True:
     client.send_message("/avatar/parameters/TongueUpRightMorph", float(TongueUpRightMorph))
     client.send_message("/avatar/parameters/TongueDownLeftMorph", float(TongueDownLeftMorph))
     #client.send_message("/avatar/parameters/TongueDownRightMorph", float(TongueDownRightMorph)) i ran out of values, so i think that I have mapped the tensors wrong.
-
-
-    #cv2.imshow("frame", frame)
+    cv2.imshow("frame", frame_copy)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
